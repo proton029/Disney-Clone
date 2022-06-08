@@ -1,0 +1,13 @@
+body{
+  margin: 0;
+  color: white;
+  background-color: #040714;
+  font-size: -apple-system, BlinkMacSystemFont,'Ubuntu','sans-serif';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code{
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 
+  monospace;
+}
