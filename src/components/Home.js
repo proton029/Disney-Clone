@@ -4,11 +4,12 @@ import ImageSlider from './ImageSlider'
 import Viewers from './Viewers'
 import Movies from './Movies'
 import db from '../firebase'
+
 function Home() {
 
     useEffect(()=>{
      console.log("Hi mom!");
-      db.collection("movies").onSnapshot((snapshot)=>{
+      db.collection("IMG").onSnapshot((snapshot)=>{
         console.log(snapshot);
       });
     }, []);
