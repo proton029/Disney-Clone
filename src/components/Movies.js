@@ -1,11 +1,23 @@
 import React from 'react'
 import styled from 'styled-components'
-
+import { selectMovies } from '../features/movie/movieSlice'
+import { useSelector } from 'react-redux'
 function Movies() {
+
+    const movies= useSelector(selectMovies);
+    console.log("this is movies", movies);
   return (
     <Container>
         <h4>Recommended for you</h4>
         <Content>
+            {
+                movies && movies.map((movie)=>(
+
+                    <Wrap>
+                        <img src={movie.cardImg} />
+                    </Wrap>
+                ))
+            }
             <Wrap>
                 <img src="https://imgc.allpostersimages.com/img/posters/frozen-2_u-L-F9J84N0.jpg"/>
             </Wrap>
@@ -18,18 +30,7 @@ function Movies() {
             <Wrap>
                 <img src="https://imgc.allpostersimages.com/img/posters/frozen-2_u-L-F9J84N0.jpg"/>
             </Wrap>
-            <Wrap>
-                <img src="https://imgc.allpostersimages.com/img/posters/frozen-2_u-L-F9J84N0.jpg"/>
-            </Wrap>
-            <Wrap>
-                <img src="https://imgc.allpostersimages.com/img/posters/frozen-2_u-L-F9J84N0.jpg"/>
-            </Wrap>
-            <Wrap>
-                <img src="https://imgc.allpostersimages.com/img/posters/frozen-2_u-L-F9J84N0.jpg"/>
-            </Wrap>
-            <Wrap>
-                <img src="https://imgc.allpostersimages.com/img/posters/frozen-2_u-L-F9J84N0.jpg"/>
-            </Wrap>
+           
         </Content>
     </Container>
   )

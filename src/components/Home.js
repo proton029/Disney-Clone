@@ -1,17 +1,29 @@
-import React, {useEffect} from 'react'
+import React, {useDebugValue, useEffect} from 'react'
 import styled from 'styled-components'
 import ImageSlider from './ImageSlider'
 import Viewers from './Viewers'
 import Movies from './Movies'
 import db from '../firebase'
+import { collection, getDocs} from "firebase/firestore";
+import { useDispatch } from 'react-redux'
+import { setMovies } from '../features/movie/movieSlice'
 
 function Home() {
-
+    const dispatch = useDispatch();
     useEffect(()=>{
      console.log("Hi mom!");
-      db.collection("IMG").onSnapshot((snapshot)=>{
-        console.log(snapshot);
-      });
+      const collRef= collection(db, 'movies');
+      getDocs(collRef)
+        .then((snapshot)=> {
+         let vals=[];
+         snapshot.docs.forEach((doc) =>{
+          vals.push({...doc.data(), id:doc.id})
+         })
+         console.log(vals);
+        })
+        .catch(err=>{
+          console.log(err.message);
+        })
     }, []);
 
   return (
