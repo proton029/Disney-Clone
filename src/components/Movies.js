@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { selectMovies } from '../features/movie/movieSlice'
 import { useSelector } from 'react-redux'
+import {Link} from 'react-router-dom'
 function Movies() {
 
     const movies= useSelector(selectMovies);
@@ -13,23 +14,14 @@ function Movies() {
             {
                 movies && movies.map((movie)=>(
 
-                    <Wrap>
-                        <img src={movie.cardImg} />
+                    <Wrap key={movie.id}>
+                       <Link to={`/detail/${movie.id}`}>
+                        <img src={movie.CardImg} />
+                       </Link>
                     </Wrap>
                 ))
             }
-            <Wrap>
-                <img src="https://imgc.allpostersimages.com/img/posters/frozen-2_u-L-F9J84N0.jpg"/>
-            </Wrap>
-            <Wrap>
-                <img src="https://imgc.allpostersimages.com/img/posters/frozen-2_u-L-F9J84N0.jpg"/>
-            </Wrap>
-            <Wrap>
-                <img src="https://imgc.allpostersimages.com/img/posters/frozen-2_u-L-F9J84N0.jpg"/>
-            </Wrap>
-            <Wrap>
-                <img src="https://imgc.allpostersimages.com/img/posters/frozen-2_u-L-F9J84N0.jpg"/>
-            </Wrap>
+            
            
         </Content>
     </Container>

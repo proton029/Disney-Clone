@@ -4,25 +4,37 @@ import ImageSlider from './ImageSlider'
 import Viewers from './Viewers'
 import Movies from './Movies'
 import db from '../firebase'
-import { collection, getDocs} from "firebase/firestore";
+import { collection, doc, getDocs} from "firebase/firestore";
 import { useDispatch } from 'react-redux'
 import { setMovies } from '../features/movie/movieSlice'
 
 function Home() {
     const dispatch = useDispatch();
     useEffect(()=>{
-     console.log("Hi mom!");
+     //console.log("Hi mom!");
+      // db.collection('movies').onSnapshot((snapshot)=>{
+      //   let tmpMovies=snapshot.docs.map((doc)=>{
+      //     console.log(doc.data());
+      //     return {id:doc.id,...doc.data()}
+      //   })
+      //})
       const collRef= collection(db, 'movies');
       getDocs(collRef)
-        .then((snapshot)=> {
-         let vals=[];
-         snapshot.docs.forEach((doc) =>{
-          vals.push({...doc.data(), id:doc.id})
-         })
-         console.log(vals);
+       .then((snapshot)=> {
+      //    let vals=[];
+      //    snapshot.docs.forEach((doc) =>{
+      //     vals.push({...doc.data(), id:doc.id})
+      //    })
+         
+         let tmpMovies=snapshot.docs.map((doc)=>{
+          // console.log(doc.data());
+          return {id:doc.id,...doc.data()}
         })
-        .catch(err=>{
-          console.log(err.message);
+        //console.log(tmpMovies);
+        dispatch(setMovies(tmpMovies));
+      //   })
+      //   .catch(err=>{
+      //     console.log(err.message);
         })
     }, []);
 
