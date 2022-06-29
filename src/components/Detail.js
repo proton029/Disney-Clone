@@ -3,19 +3,57 @@ import styled from 'styled-components'
 import { useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import db from '../firebase'
+import { collection, onSnapshot, doc, getDoc} from 'firebase/firestore'
+
 function Detail() {
   const {id} =useParams();
-  
+  const [movie, setMovie]=useState({});
+  const [loading, setLoading]=useState(true);
+  const [error, setError]=useState();
+  async function myFunction() {
+    
+      const docRef = doc(db, "movies",id);
+      const docSnap = await getDoc(docRef);
+      if (docSnap.exists()) {
+        console.log("Document data:", docSnap.data());
+        setMovie(docSnap.data());
+        setLoading(false);
+      } else {
+        // doc.data() will be undefined in this case
+        console.log(error=>setError(error));
+      }
+
+
+  }
   useEffect(()=>{
 
+    // const docRef=doc(db,'movies',id)
+    // getDoc(docRef)
+    //   .then((doc)=>{
+    //     setMovie(doc.data())
+    //   });
+      // onSnapshot(docRef, (doc) => {
+      //   if(doc.exists){
+      //     setMovie(doc.data())
+      //   }else{
+      //     console.log("No movie")
+      //   }
+       
+      // })
+        myFunction();
+
+     
   },[])
+  if(loading) console.log("Loading...");
+  if(error) console.log("Error");
+  console.log("movies are", movie);
   return (
     <Container>
         <Background>
-          <img src='https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/4F39B7E16726ECF419DD7C49E011DD95099AA20A962B0B10AA1881A70661CE45/scale?width=1440&aspectRatio=1.78&format=jpeg'/>
+          <img src={movie.CardImg} alt=''/>
         </Background>
         <Imagetitle>
-          <img src='https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/D7AEE1F05D10FC37C873176AAA26F777FC1B71E7A6563F36C6B1B497CAB1CEC2/scale?width=1440&aspectRatio=1.78'/>
+          <img src='/images/Disney+_logo.svg.png'/>
         </Imagetitle>
         <Controls>
           <PlayButton>
@@ -33,10 +71,9 @@ function Detail() {
              <img src="/images/group-icon.png" />
           </GroupWatchButton>
         </Controls>
-        <SubTitle>2022 .7m . Family, Fantasy, Kids, Animation</SubTitle>
+        <SubTitle>{movie.Cast}</SubTitle>
         <Description>
-          A Chinese mom who's sad when her grown son leaves home 
-          gets another chance at motherhood when one of her dumplings springs to life.
+          {movie.SubTitle}
         </Description>
     </Container>
   )
