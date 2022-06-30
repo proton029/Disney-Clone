@@ -1,10 +1,10 @@
-import React, {useDebugValue, useEffect} from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import ImageSlider from './ImageSlider'
 import Viewers from './Viewers'
 import Movies from './Movies'
 import db from '../firebase'
-import { collection, doc, getDocs} from "firebase/firestore";
+import { collection, getDocs} from "firebase/firestore";
 import { useDispatch } from 'react-redux'
 import { setMovies } from '../features/movie/movieSlice'
 
