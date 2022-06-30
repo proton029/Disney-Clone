@@ -47,7 +47,7 @@ function Header() {
             }
         })
 
-    },[])
+    },[userName])
   return (
     <Nav>
         <Logo src="/images/logo.svg" />
@@ -87,7 +87,7 @@ function Header() {
             </NavMenu>
             <UserImg 
                 onClick={signOut}
-                src='/images/ita.jpg'/>
+                src={userPhoto}/>
                 
             </>
         

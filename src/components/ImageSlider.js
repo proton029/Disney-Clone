@@ -16,10 +16,13 @@ function ImageSlider() {
   return (
     <Carousel {...settings}>
         <Wrap>
-            <img src='/images/slider-badging.jpg' />
+            <img src='https://freegametips.com/wp-content/uploads/2021/01/Scarlet-Witch-and-Vision-Wandavision-will-it-have-a-second.jpg' alt='no internet!' />
         </Wrap>
         <Wrap>
-            <img src='/images/slider-badag.jpg' />
+            <img src='http://www.excelebiz.in/wp-content/uploads/2021/11/IPL-Banner.jpg' />
+        </Wrap>
+        <Wrap>
+            <img src='https://resources.platform.pulselive.com/premierleague/photo/2016/06/28/577d8643-91c2-4e8c-83ce-a2ec4f7bd1a4/GettyImages-516678986.jpg' alt="no internet" />
         </Wrap>
     </Carousel>
   )
@@ -45,6 +48,7 @@ const Carousel=styled(Slider)`
     }
 `
 const Wrap = styled.div`
+height: 350px;
 cursor: pointer;
     img{
         border-radius: 4px solid transparent;
