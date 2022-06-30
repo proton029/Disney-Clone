@@ -8,7 +8,7 @@ import {  selectUserName,
 import { useDispatch, useSelector } from 'react-redux'
 import { auth, provider } from '../firebase'
 import { signInWithPopup, signOut } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 function Header() {
     const navigate= useNavigate();
@@ -50,7 +50,9 @@ function Header() {
     },[userName])
   return (
     <Nav>
+        <Link to="/">
         <Logo src="/images/logo.svg" />
+        </Link>
         { !userName?(
             <LoginContainer>
                 <Login onClick={signIn}>Login</Login>
@@ -156,6 +158,7 @@ const UserImg=styled.img`
     cursor: pointer;
 `
 const Login = styled.div`
+    cursor: pointer;
     background-color: rgba(0, 0, 0, 0.6);
     padding: 8px 16px;
     text-transform: uppercase;
