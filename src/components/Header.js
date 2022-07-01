@@ -163,6 +163,7 @@ const UserImg=styled.img`
 `
 const Login = styled.div`
     cursor: pointer;
+    margin-left: calc(100vw - 250px);
     background-color: rgba(0, 0, 0, 0.6);
     padding: 8px 16px;
     text-transform: uppercase;
