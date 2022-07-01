@@ -8,7 +8,7 @@ import {  selectUserName,
 import { useDispatch, useSelector } from 'react-redux'
 import { auth, provider } from '../firebase'
 import { signInWithPopup, signOut } from "firebase/auth";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, Navigate } from "react-router-dom";
 
 function Header() {
     const navigate= useNavigate();
@@ -44,6 +44,8 @@ function Header() {
                     photo:user.photoURL
                 }))
                 navigate('/')
+            }else{
+                navigate('/login')
             }
         })
 
@@ -54,11 +56,14 @@ function Header() {
         
         
         { !userName?(
-            
+             
             <LoginContainer>
+                
                 <Logo src="/images/logo.svg" />
                 <Login onClick={signIn}>Login</Login>
             </LoginContainer>
+            
+            
             ):(
             <>
             <Link to="/">
