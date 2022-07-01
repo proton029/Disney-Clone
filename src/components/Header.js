@@ -43,22 +43,26 @@ function Header() {
                     email:user.email,
                     photo:user.photoURL
                 }))
-                navigate('/')
+                navigate('/home')
+            }else{
+                navigate('/login')
             }
         })
 
     },[userName])
   return (
     <Nav>
-        <Link to="/">
-        <Logo src="/images/logo.svg" />
-        </Link>
+        
         { !userName?(
             <LoginContainer>
+                <Logo src="/images/logo.svg" />
                 <Login onClick={signIn}>Login</Login>
             </LoginContainer>
             ):(
             <>
+            <Link to="/home">
+                 <Logo src="/images/logo.svg" />
+            </Link>
             <NavMenu>
                     <a >
                         <img src='/images/home-icon.svg' alt='' />
@@ -175,5 +179,5 @@ const Login = styled.div`
 const LoginContainer=styled.div`
     flex:1;
     display: flex;
-    justify-content: flex-end;
+    /* justify-content: flex-end; */
 `
