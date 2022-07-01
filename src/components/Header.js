@@ -24,7 +24,7 @@ function Header() {
                     email:user.email,
                     photo:user.photoURL
                 }))
-                navigate('/');
+                navigate('/home');
                 //console.log(result);
             })
     }
@@ -43,7 +43,7 @@ function Header() {
                     email:user.email,
                     photo:user.photoURL
                 }))
-                navigate('/')
+                navigate('/home')
             }else{
                 navigate('/login')
             }
@@ -66,7 +66,7 @@ function Header() {
             
             ):(
             <>
-            <Link to="/">
+            <Link to="/home">
              <Logo src="/images/logo.svg" />
             </Link>
             <NavMenu>
