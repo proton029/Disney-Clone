@@ -50,15 +50,20 @@ function Header() {
     },[userName])
   return (
     <Nav>
-        <Link to="/">
-        <Logo src="/images/logo.svg" />
-        </Link>
+        
+        
+        
         { !userName?(
+            
             <LoginContainer>
+                <Logo src="/images/logo.svg" />
                 <Login onClick={signIn}>Login</Login>
             </LoginContainer>
             ):(
             <>
+            <Link to="/">
+             <Logo src="/images/logo.svg" />
+            </Link>
             <NavMenu>
                     <a >
                         <img src='/images/home-icon.svg' alt='' />
@@ -109,6 +114,7 @@ const Nav= styled.nav`
     overflow-x: hidden;
 `
 const Logo= styled.img`
+    margin-left:10px;
     width:80px;
 `
 const NavMenu=styled.div`
@@ -159,6 +165,7 @@ const UserImg=styled.img`
 `
 const Login = styled.div`
     cursor: pointer;
+    margin-left: calc(100vw - 300px);
     background-color: rgba(0, 0, 0, 0.6);
     padding: 8px 16px;
     text-transform: uppercase;
@@ -175,5 +182,5 @@ const Login = styled.div`
 const LoginContainer=styled.div`
     flex:1;
     display: flex;
-    justify-content: flex-end;
+    /* justify-content: flex-end; */
 `
