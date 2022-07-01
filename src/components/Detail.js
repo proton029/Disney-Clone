@@ -50,7 +50,7 @@ function Detail() {
   return (
     <Container>
         <Background>
-          <img src={movie.BgImg} alt=''/>
+          <img src={movie.CardImg} alt=''/>
         </Background>
         <Imagetitle>
           <img src='/images/Disney+_logo.svg.png'/>
