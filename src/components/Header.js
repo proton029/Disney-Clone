@@ -24,7 +24,7 @@ function Header() {
                     email:user.email,
                     photo:user.photoURL
                 }))
-                navigate('/');
+                navigate('/home');
                 //console.log(result);
             })
     }
